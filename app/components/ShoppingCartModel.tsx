@@ -7,7 +7,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import Image from "next/image";
-import { useShoppingCart } from "use-shopping-cart";
+import { useShoppingCart, CartEntry } from "use-shopping-cart";
 
 export default function ShoppingCartModel() {
   const {
@@ -17,10 +17,12 @@ export default function ShoppingCartModel() {
     cartDetails,
     removeItem,
     totalPrice,
+    redirectToCheckout,
   } = useShoppingCart();
 
-  const { redirectToCheckout } = useShoppingCart();
-  async function handleCheckoutClick(event: any) {
+  async function handleCheckoutClick(
+    event: React.MouseEvent<HTMLButtonElement>
+  ) {
     event.preventDefault();
     try {
       const result = await redirectToCheckout();
@@ -45,7 +47,7 @@ export default function ShoppingCartModel() {
                 <h1 className="py-6">You don't have any items</h1>
               ) : (
                 <>
-                  {Object.values(cartDetails ?? {}).map((entry) => (
+                  {Object.values(cartDetails ?? {}).map((entry: CartEntry) => (
                     <li key={entry.id} className="flex py-6">
                       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                         <Image
@@ -103,7 +105,7 @@ export default function ShoppingCartModel() {
               <p>
                 OR{" "}
                 <button
-                  onClick={() => handleCartClick(entry.price_id)}
+                  onClick={() => handleCartClick()}
                   className="font-medium text-primary hover:text-primary/80"
                 >
                   {" "}
