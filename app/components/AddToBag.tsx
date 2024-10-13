@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useShoppingCart, CartEntry } from "use-shopping-cart";
+import { useShoppingCart } from "use-shopping-cart";
 import { urlFor } from "../lib/sanity";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
@@ -23,7 +23,7 @@ export default function AddToBag({
 }: ProductCart) {
   const { addItem, handleCartClick } = useShoppingCart();
 
-  const product: CartEntry = {
+  const product = {
     name: name,
     description: description,
     price: price,
