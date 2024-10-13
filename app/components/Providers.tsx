@@ -3,7 +3,7 @@
 import { CartProvider } from "use-shopping-cart";
 import { ReactNode } from "react";
 
-export default function CartProvider({ children }: { children: ReactNode }) {
+export default function Provider({ children }: { children: ReactNode }) {
   return (
     <CartProvider
       mode="payment"
