@@ -1,6 +1,6 @@
 import AddToBag from "@/app/components/AddToBag";
 import CheckOutNow from "@/app/components/CheckOutNow";
-import ImageGallery from "@/app/components/imageGallery";
+import ImageGallery from "@/app/components/ImageGallery";
 import { fullProduct } from "@/app/interface";
 import { client } from "@/app/lib/sanity";
 import { Button } from "@/components/ui/button";
@@ -33,7 +33,10 @@ export default async function ProductPage({
     <div className="bg-white">
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="grid gap-8 md:grid-cols-2">
-          <ImageGallery images={data.image} />
+          {/* Ensure images is passed as an array */}
+          <ImageGallery
+            images={Array.isArray(data.image) ? data.image : [data.image]}
+          />
 
           <div className="md:py-8">
             <div className="mb-2 md:mb-3">
@@ -77,7 +80,7 @@ export default async function ProductPage({
               <AddToBag
                 currency="INR"
                 description={data.description}
-                image={data.image[0]}
+                image={Array.isArray(data.image) ? data.image[0] : data.image} // Ensure image is properly handled
                 name={data.name}
                 price={data.price}
                 key={data._id}
@@ -86,15 +89,12 @@ export default async function ProductPage({
               <CheckOutNow
                 currency="INR"
                 description={data.description}
-                image={data.image[0]}
+                image={Array.isArray(data.image) ? data.image[0] : data.image} // Ensure image is properly handled
                 name={data.name}
                 price={data.price}
                 key={data._id}
                 price_id={data.price_id}
               />
-              <Button className="" variant={"secondary"}>
-                CheckOut Now
-              </Button>
             </div>
             <p className="mt-12 text-base text-gray-500 tracking-wide">
               {data.description}
