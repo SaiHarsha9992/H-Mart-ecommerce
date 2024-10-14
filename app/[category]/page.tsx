@@ -17,6 +17,7 @@ async function getData(category: string) {
         "categoryName": category->name
     }`;
     const data = await client.fetch(query);
+    console.log("Fetched products:", data.length);
     return data;
   }
   const query = `*[_type == "product" && category->name == "${category}"]{
@@ -28,8 +29,10 @@ async function getData(category: string) {
         "categoryName": category->name
     }`;
   const data = await client.fetch(query);
+  console.log("Fetched products:", data);
   return data;
 }
+
 export const dynamic = "force-dynamic";
 export default async function CategoryPage({
   params,
