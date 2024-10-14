@@ -106,7 +106,7 @@ export default function ShoppingCartModel() {
               <p>
                 OR&nbsp;
                 <button
-                  onClick={() => handleCartClick(entry.price_id)}
+                  onClick={() => handleCartClick()}
                   className="font-medium text-primary hover:text-primary/80"
                 >
                   Continue Shopping
