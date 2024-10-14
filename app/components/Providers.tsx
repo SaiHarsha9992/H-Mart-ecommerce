@@ -14,6 +14,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
       currency="INR"
       billingAddressCollection={false}
       language="en-US"
+      shouldPersist={true}  // Added this line to persist cart state
     >
       {children}
     </USCProvider>
