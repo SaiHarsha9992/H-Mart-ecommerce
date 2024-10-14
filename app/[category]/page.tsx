@@ -1,34 +1,47 @@
+"use client";
 import Link from "next/link";
-import { simplifiedProduct } from "../interface";
-import { client } from "../lib/sanity";
+import { simplifiedProduct } from "../interface"; // Assuming you have an interface for the products
+import { client } from "../lib/sanity"; // Sanity client for fetching data
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
+// Function to fetch products based on the category
 async function getData(category: string) {
-  console.log(category);
+  console.log("Fetching data for category:", category);
+
   const query = `*[_type == "product" && "${category}" in categories[]->name] {
-  _id,
-  "imageUrl": image[0].asset->url,
-  price,
-  name,
-  "slug": slug.current,
-  "categoryNames": categories[]->name
-}
-`;
+    _id,
+    "imageUrl": image[0].asset->url,
+    price,
+    name,
+    "slug": slug.current,
+    "categoryNames": categories[]->name
+  }`;
+
   const data = await client.fetch(query);
   console.log("Fetched products:", data);
   return data;
 }
 
+// Enable dynamic rendering
 export const dynamic = "force-dynamic";
-export default async function CategoryPage({
+
+export default function CategoryPage({
   params,
 }: {
-  params: {
-    category: string;
-  };
+  params: { category: string };
 }) {
-  const data: simplifiedProduct[] = await getData(params.category);
+  const [data, setData] = useState<simplifiedProduct[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const products = await getData(params.category);
+      setData(products);
+    };
+
+    fetchData();
+  }, [params.category]); // Re-fetch data when category changes
 
   return (
     <div className="bg-white">
@@ -46,7 +59,7 @@ export default async function CategoryPage({
           </Link>
         </div>
 
-        {/* Updated grid settings to show 4 products per row */}
+        {/* Grid layout for displaying products */}
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {data.map((product) => (
             <div key={product._id} className="group relative">
@@ -67,7 +80,8 @@ export default async function CategoryPage({
                     </Link>
                   </h3>
                   <p className="text-sm text-gray-500 mt-1">
-                    {product.categoryName}
+                    {product.categoryNames.join(", ")}{" "}
+                    {/* Display all category names */}
                   </p>
                 </div>
                 <p className="text-lg font-semibold text-gray-900">
