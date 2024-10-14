@@ -20,7 +20,9 @@ export default function ShoppingCartModel() {
   } = useShoppingCart();
 
   const { redirectToCheckout } = useShoppingCart();
-  async function handleCheckoutClick(event: any) {
+  async function handleCheckoutClick(
+    event: React.MouseEvent<HTMLButtonElement>
+  ) {
     event.preventDefault();
     try {
       const result = await redirectToCheckout();
@@ -42,7 +44,7 @@ export default function ShoppingCartModel() {
           <div className="mt-8 flex-1 overflow-auto">
             <ul className="-my-6 divide-y divide-gray-200">
               {cartCount === 0 ? (
-                <h1 className="py-6">You don't have any items</h1>
+                <h1 className="py-6">You don&apos;t have any items</h1>
               ) : (
                 <>
                   {Object.values(cartDetails ?? {}).map((entry) => (
@@ -101,12 +103,11 @@ export default function ShoppingCartModel() {
             </div>
             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
               <p>
-                OR{" "}
+                OR&nbsp;
                 <button
                   onClick={() => handleCartClick(entry.price_id)}
                   className="font-medium text-primary hover:text-primary/80"
                 >
-                  {" "}
                   Continue Shopping
                 </button>
               </p>
