@@ -5,6 +5,15 @@ import { fullProduct } from "@/app/interface";
 import { client } from "@/app/lib/sanity";
 import { Button } from "@/components/ui/button";
 import { Star, Truck } from "lucide-react";
+import imageUrlBuilder from "@sanity/image-url";
+
+// Initialize the image URL builder
+const builder = imageUrlBuilder(client);
+
+// Helper function to get the URL for an image
+function urlFor(source) {
+  return builder.image(source);
+}
 
 async function getData(slug: string) {
   const query = `*[_type == "product" && slug.current == "${slug}"][0]{
@@ -19,24 +28,29 @@ async function getData(slug: string) {
     }`;
 
   const data = await client.fetch(query);
-
   return data;
 }
+
 export const dynamic = "force-dynamic";
+
 export default async function ProductPage({
   params,
 }: {
   params: { slug: string };
 }) {
   const data: fullProduct = await getData(params.slug);
+
+  // Build image URLs using urlFor and pass them to the ImageGallery component
+  const images = Array.isArray(data.image)
+    ? data.image.map((img) => urlFor(img).url())
+    : [urlFor(data.image).url()];
+
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="grid gap-8 md:grid-cols-2">
-          {/* Ensure images is passed as an array */}
-          <ImageGallery
-            images={Array.isArray(data.image) ? data.image : [data.image]}
-          />
+          {/* Ensure images are passed as an array of URLs */}
+          <ImageGallery images={images} />
 
           <div className="md:py-8">
             <div className="mb-2 md:mb-3">
@@ -80,7 +94,7 @@ export default async function ProductPage({
               <AddToBag
                 currency="INR"
                 description={data.description}
-                image={Array.isArray(data.image) ? data.image[0] : data.image} // Ensure image is properly handled
+                image={images[0]} // Use the first image URL
                 name={data.name}
                 price={data.price}
                 key={data._id}
@@ -89,7 +103,7 @@ export default async function ProductPage({
               <CheckOutNow
                 currency="INR"
                 description={data.description}
-                image={Array.isArray(data.image) ? data.image[0] : data.image} // Ensure image is properly handled
+                image={images[0]} // Use the first image URL
                 name={data.name}
                 price={data.price}
                 key={data._id}
