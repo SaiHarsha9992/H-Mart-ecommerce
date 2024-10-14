@@ -51,11 +51,12 @@ export default function ShoppingCartModel() {
                     <li key={entry.id} className="flex py-6">
                       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                         <Image
-                          src={entry.image}
-                          alt={entry.name}
-                          width={100}
-                          height={100}
-                        />
+  src={entry.image || "/fallback-image.jpg"} // Provide a default image path
+  alt={entry.name}
+  width={100}
+  height={100}
+/>
+
                       </div>
 
                       <div className="ml-4 flex flex-1 flex-col">
