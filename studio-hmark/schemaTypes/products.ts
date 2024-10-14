@@ -1,5 +1,3 @@
-import {title} from 'process'
-
 export default {
   name: 'product',
   type: 'document',
@@ -41,10 +39,15 @@ export default {
       type: 'string',
     },
     {
-      name: 'category',
-      type: 'reference',
-      title: 'Product Category',
-      to: [{type: 'category'}],
+      name: 'categories', // Changed from 'category' to 'categories'
+      type: 'array', // Allowing multiple categories as an array
+      title: 'Product Categories',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'category'}],
+        },
+      ],
     },
   ],
 }
