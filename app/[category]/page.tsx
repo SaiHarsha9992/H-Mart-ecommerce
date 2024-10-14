@@ -6,28 +6,15 @@ import Image from "next/image";
 
 async function getData(category: string) {
   console.log(category);
-
-  if (category == "all") {
-    const query = `*[_type == "product"]{
-        _id,
-        "imageUrl": image[0].asset->url,
-        price,
-        name,
-        "slug": slug.current,
-        "categoryName": category->name
-    }`;
-    const data = await client.fetch(query);
-    console.log("Fetched products:", data.length);
-    return data;
-  }
-  const query = `*[_type == "product" && category->name == "${category}"]{
-        _id,
-        "imageUrl": image[0].asset->url,
-        price,
-        name,
-        "slug": slug.current,
-        "categoryName": category->name
-    }`;
+  const query = `*[_type == "product" && "${category}" in categories[]->name] {
+  _id,
+  "imageUrl": image[0].asset->url,
+  price,
+  name,
+  "slug": slug.current,
+  "categoryNames": categories[]->name
+}
+`;
   const data = await client.fetch(query);
   console.log("Fetched products:", data);
   return data;
@@ -51,7 +38,7 @@ export default async function CategoryPage({
             Our Products for {params.category}
           </h2>
 
-          <Link href="/all" className="text-primary flex items-center gap-x-1">
+          <Link href="/All" className="text-primary flex items-center gap-x-1">
             See All{" "}
             <span>
               <ArrowRight />
