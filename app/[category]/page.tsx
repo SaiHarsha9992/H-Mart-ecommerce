@@ -7,7 +7,7 @@ import Image from "next/image";
 async function getData(category: string) {
   console.log(category);
 
-  if (category === "all") {
+  if (category == "all") {
     const query = `*[_type == "product"]{
         _id,
         "imageUrl": image[0].asset->url,
