@@ -80,8 +80,7 @@ export default function CategoryPage({
                     </Link>
                   </h3>
                   <p className="text-sm text-gray-500 mt-1">
-                    {product.categoryNames.join(", ")}{" "}
-                    {/* Display all category names */}
+                    {product.categoryName} {/* Display all category names */}
                   </p>
                 </div>
                 <p className="text-lg font-semibold text-gray-900">
