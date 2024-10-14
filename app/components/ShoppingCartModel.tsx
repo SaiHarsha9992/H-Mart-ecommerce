@@ -7,7 +7,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import Image from "next/image";
-import { useShoppingCart, CartEntry } from "use-shopping-cart";
+import { useShoppingCart } from "use-shopping-cart";
 
 export default function ShoppingCartModel() {
   const {
@@ -17,12 +17,10 @@ export default function ShoppingCartModel() {
     cartDetails,
     removeItem,
     totalPrice,
-    redirectToCheckout,
   } = useShoppingCart();
 
-  async function handleCheckoutClick(
-    event: React.MouseEvent<HTMLButtonElement>
-  ) {
+  const { redirectToCheckout } = useShoppingCart();
+  async function handleCheckoutClick(event: any) {
     event.preventDefault();
     try {
       const result = await redirectToCheckout();
@@ -44,10 +42,10 @@ export default function ShoppingCartModel() {
           <div className="mt-8 flex-1 overflow-auto">
             <ul className="-my-6 divide-y divide-gray-200">
               {cartCount === 0 ? (
-                <h1 className="py-6">You dont have any items</h1>
+                <h1 className="py-6">You don't have any items</h1>
               ) : (
                 <>
-                  {Object.values(cartDetails ?? {}).map((entry: CartEntry) => (
+                  {Object.values(cartDetails ?? {}).map((entry) => (
                     <li key={entry.id} className="flex py-6">
                       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                         <Image
@@ -105,7 +103,7 @@ export default function ShoppingCartModel() {
               <p>
                 OR{" "}
                 <button
-                  onClick={() => handleCartClick()}
+                  onClick={() => handleCartClick(entry.price_id)}
                   className="font-medium text-primary hover:text-primary/80"
                 >
                   {" "}
