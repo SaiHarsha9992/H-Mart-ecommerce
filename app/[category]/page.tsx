@@ -74,7 +74,7 @@ export default function CategoryPage({
               </div>
               <div className="mt-4 flex justify-between items-center">
                 <div>
-                  <h3 className="text-sm text-gray-700">
+                  <h3 className="text-md text-gray-900">
                     <Link href={`/product/${product.slug}`}>
                       {product.name}
                     </Link>
