@@ -5,14 +5,14 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 async function getData() {
-  const query = `*[_type == 'product'][0...4] | order(_createdAt asc) {
-        _id,
-        price,
-        name,
-        "slug": slug.current,
-        "categoryName": category->name,
-        "imageUrl": image[0].asset->url
-    }`;
+  const query = `*[_type == 'product'] | order(_createdAt desc)[0...4] {
+    _id,
+    price,
+    name,
+    "slug": slug.current,
+    "categoryName": category->name,
+    "imageUrl": image[0].asset->url
+}`;
 
   const data = await client.fetch(query);
 
