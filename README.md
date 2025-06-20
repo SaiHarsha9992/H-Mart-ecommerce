@@ -2,9 +2,9 @@
 
 # 🛒 H-Mart E-commerce  
 **A Scalable, Modern E-commerce Web Application Built with MERN Stack**
+![Screenshot 2025-06-09 141311](https://github.com/user-attachments/assets/117a4c03-7ce1-481c-92d7-50726e198a64)
 
 </div>
-![Screenshot 2025-06-09 141311](https://github.com/user-attachments/assets/117a4c03-7ce1-481c-92d7-50726e198a64)
 
 ---
 
@@ -77,8 +77,6 @@ Ensure MongoDB is running locally or set your remote MongoDB URI in .env
 Create a .env file in the server/ directory and define:
 
 env
-Copy
-Edit
 PORT=5000
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
