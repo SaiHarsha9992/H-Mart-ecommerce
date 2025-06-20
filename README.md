@@ -2,6 +2,8 @@
 
 # 🛒 H-Mart E-commerce  
 **A Scalable, Modern E-commerce Web Application Built with MERN Stack**
+🔗 [Hmart](https://h-mart-ecommerce.vercel.app/)
+
 ![Screenshot 2025-06-09 141311](https://github.com/user-attachments/assets/117a4c03-7ce1-481c-92d7-50726e198a64)
 
 </div>
