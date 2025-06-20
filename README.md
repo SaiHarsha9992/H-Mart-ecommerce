@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# 🛒 H-Mart E-commerce  
+**A Scalable, Modern E-commerce Web Application Built with MERN Stack**
 
-First, run the development server:
+</div>
+![Screenshot 2025-06-09 141311](https://github.com/user-attachments/assets/117a4c03-7ce1-481c-92d7-50726e198a64)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📌 Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**H-Mart E-commerce** is a full-stack online shopping platform inspired by modern e-commerce giants. It features user authentication, product browsing, cart management, and secure checkout. The project is built using the **MERN (MongoDB, Express, React, Node.js)** stack, and follows responsive, component-based design practices with performance optimizations.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ✨ Features
 
-To learn more about Next.js, take a look at the following resources:
+- 👤 **User Authentication:** Register/login functionality with JWT security
+- 🛍️ **Product Listings:** Dynamic product catalog with search and filter
+- 🛒 **Shopping Cart:** Add/remove products, adjust quantity, and checkout
+- 💳 **Order Placement:** Simulated payment and order history
+- 📦 **Admin Panel (Optional):** Product management & analytics-ready
+- 🌐 **Responsive UI:** Tailwind/Bootstrap for cross-device compatibility
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Tech Stack
 
-## Deploy on Vercel
+| Category     | Technologies                                      |
+|--------------|---------------------------------------------------|
+| 🌐 Frontend   | React.js, Tailwind CSS / Bootstrap               |
+| ⚙️ Backend    | Node.js, Express.js                              |
+| 🛢️ Database   | MongoDB (via Mongoose ODM)                       |
+| 🔐 Auth       | JWT, bcrypt                                       |
+| 📦 State Mgmt | React Context API or Redux (if added)            |
+| 📡 API Comm   | RESTful APIs with Axios                          |
+| 🚀 Dev Tools  | Vite / Create React App, ESLint, dotenv          |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Getting Started
+
+### 📋 Prerequisites
+
+Ensure you have the following installed:
+- Node.js
+- MongoDB
+- npm or yarn
+
+---
+
+### 📦 Installation
+
+# Clone the repository
+git clone https://github.com/SaiHarsha9992/H-Mart-ecommerce.git
+
+# Navigate to the project
+cd H-Mart-ecommerce
+
+# Install frontend & backend dependencies
+npm install      # or yarn install
+▶️ Run the Project
+bash
+Copy
+Edit
+# Start frontend
+cd client
+npm start        # or yarn start
+
+# Start backend
+cd server
+npm run dev      # or nodemon server.js
+Ensure MongoDB is running locally or set your remote MongoDB URI in .env
+
+🌐 Environment Variables
+Create a .env file in the server/ directory and define:
+
+env
+Copy
+Edit
+PORT=5000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+
+
+📸 Preview
+
+![Screenshot 2025-06-09 141311](https://github.com/user-attachments/assets/117a4c03-7ce1-481c-92d7-50726e198a64)
+
+
+🤝 Contributing
+Fork this repository
+
+Create a new branch (git checkout -b feature/your-feature)
+
+Commit your changes (git commit -m 'Add feature')
+
+Push to the branch (git push origin feature/your-feature)
+
+Open a Pull Request
+
+🙋‍♂️ Author
+G K S Harsha
+Full Stack Developer | MERN Stack Enthusiast
+🔗 [LinkedIn](https://www.linkedin.com/in/g-kedarinadh-sai-harsha/)
+
+<div align="center">
+⭐️ If you found this project helpful, please consider giving it a star! ⭐️
+
+</div> ```
